@@ -8,6 +8,7 @@ namespace BatailleNavale
 {
     interface INavire 
     {
+        //Retourne les initiciaux des navire
         string GetCourteName();
     }
 }
