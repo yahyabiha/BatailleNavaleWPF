@@ -28,20 +28,41 @@ namespace BatailleNavale
             // Nouvelle matrice vide (aucune case occupée au départ)
             Matrice = new Matrice2D(NbLignes, NbColonnes) { IndexDepart = 1 };
 
-            // On place les navires pour un début de partie
-            PlacerNavire(TypeNavire.SousMarin);
-            PlacerNavire(TypeNavire.SousMarin);
-            PlacerNavire(TypeNavire.Destroyer);
-            PlacerNavire(TypeNavire.Destroyer);
-            PlacerNavire(TypeNavire.Cuirasse);
-            PlacerNavire(TypeNavire.Patrouilleur);
-            PlacerNavire(TypeNavire.PorteAvions);
+            //SousMarin
+           PlacerNavire(1);
+           // Destroyer
+            PlacerNavire(2);
+            PlacerNavire(2);
+            //Cuirasse
+            PlacerNavire(3);
+            //Patrouilleur
+            PlacerNavire(4);
+            //PorteAvions
+            PlacerNavire(5);
         }
 
-        private void PlacerNavire(TypeNavire typeNavire)
+        private void PlacerNavire(int p_Nombre)
         {
-            Case[] cases = TrouverPlace((int)typeNavire);
-            new Navire(typeNavire, cases);
+            Case[] cases = TrouverPlace(p_Nombre);
+
+            switch ( p_Nombre)
+            {
+                case 1:
+                    new SousMarin(cases);
+                    break;
+                case 2:
+                    new Destroyer(cases);
+                    break;
+                case 3:
+                    new Cuirasse(cases);
+                    break;
+                case 4:
+                    new Patrouilleur(cases);
+                    break;
+                case 5:
+                    new PorteAvions(cases);
+                    break;
+            }
         }
 
         // Trouve une place vide au hasard pour le nombre de cases demandé (la méthode assume qu'il y a de la place)
@@ -137,32 +158,32 @@ namespace BatailleNavale
 
             for (int i = 1; i <= NbLignes; i++)
             {
-                chaine += $"{lignes[i-1]}  ";
+                chaine += $"{lignes[i - 1]}  ";
 
                 for (int j = 1; j <= NbColonnes; j++)
                 {
                     if (GetNavire(i, j, out Navire navire))
                     {
-                        char type = ' ';
-                        switch (navire.Type)
-                        {
-                            case TypeNavire.Cuirasse:
-                                type = 'C';
-                                break;
-                            case TypeNavire.Destroyer:
-                                type = 'D';
-                                break;
-                            case TypeNavire.Patrouilleur:
-                                type = 'P';
-                                break;
-                            case TypeNavire.PorteAvions:
-                                type = 'A';
-                                break;
-                            case TypeNavire.SousMarin:
-                                type = 'S';
-                                break;
-                        }
-                        chaine += $" {type} ";
+                        //char type = ' ';
+                        //switch (navire.Type)
+                        //{
+                        //    case TypeNavire.Cuirasse:
+                        //        type = 'C';
+                        //        break;
+                        //    case TypeNavire.Destroyer:
+                        //        type = 'D';
+                        //        break;
+                        //    case TypeNavire.Patrouilleur:
+                        //        type = 'P';
+                        //        break;
+                        //    case TypeNavire.PorteAvions:
+                        //        type = 'A';
+                        //        break;
+                        //    case TypeNavire.SousMarin:
+                        //        type = 'S';
+                        //        break;
+                        //}
+                        chaine += $" {navire.GetCourteName()} ";
                     }
                     else
                     {

@@ -8,5 +8,15 @@ namespace BatailleNavale
 {
     class Patrouilleur : Navire
     {
+        
+        public Patrouilleur(Case[] cases) : base(cases)
+        {
+
+        }
+
+        public override string GetCourteName()
+        {
+            return "P";
+        }
     }
 }

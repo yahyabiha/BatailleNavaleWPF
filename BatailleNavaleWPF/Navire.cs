@@ -2,31 +2,36 @@
 
 namespace BatailleNavale
 {
-    class Navire: INavire
+     abstract class Navire: INavire
     {
         //public TypeNavire Type { get; }
-        //public bool Coule { get => EstCoule(); }
+        public bool Coule { get => EstCoule(); }
 
-        //private readonly Case[] cases;
+        private readonly Case[] cases;
 
-        //public Navire (TypeNavire type, Case[] carres)
-        //{
-        //    Type = type;
-        //    cases = carres;
+        public Navire(Case[] carres)
 
-        //    foreach (Case carre in cases)
-        //    {
-        //        carre.Navire = this;
-        //    }
-        //}
+        {
+            //Type = type;
+            cases = carres;
 
-//        private bool EstCoule()
-//        {
-//            foreach (Case carre in cases)
-//            {
-//                if (!carre.Touche) return false;
-//            }
-//            return true;
-//        }
-  }
+            foreach (Case carre in cases)
+            {
+                carre.Navire = this;
+            }
+        }
+
+        private bool EstCoule()
+        {
+            foreach (Case carre in cases)
+            {
+                if (!carre.Touche) return false;
+            }
+            return true;
+        }
+        
+        // public abstract override string ToString();
+
+        public abstract string GetCourteName();
+    }
 }

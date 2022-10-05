@@ -8,5 +8,14 @@ namespace BatailleNavale
 {
     class PorteAvions : Navire
     {
+        public PorteAvions(Case[] cases) : base(cases)
+        {
+
+        }
+
+        public override string GetCourteName()
+        {
+            return "PA";
+        }
     }
 }
