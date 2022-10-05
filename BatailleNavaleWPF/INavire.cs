@@ -8,5 +8,6 @@ namespace BatailleNavale
 {
     interface INavire 
     {
+        string GetCourteName();
     }
 }
