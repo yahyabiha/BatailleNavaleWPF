@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BatailleNavale
 {
+//ajout commentaire pour but de test 
     class Destroyer : Navire
     {
     }
